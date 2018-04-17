@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="vm"
+            type="com.example.augusto.firetruckassistant.FiretruckAssistVM"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/etxName"
+            android:text="Enter your name:"
+            android:textSize="30dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintLeft_toLeftOf="@+id/etxName"
+            app:layout_constraintRight_toRightOf="@+id/etxName"/>
+
+        <EditText
+            android:id="@+id/etxName"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:text="@{vm.Name}"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:addTextChangedListener="@{vm.watcher}"/>
+
+        <Button
+            android:id="@+id/btnOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            app:layout_constraintTop_toBottomOf="@+id/etxName"
+            app:layout_constraintRight_toRightOf="@+id/etxName"
+            app:layout_constraintLeft_toLeftOf="@+id/etxName"
+            android:textSize="25dp"
+            android:layout_marginTop="10dp"
+            android:onClick="Button_OK_Clicked"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
