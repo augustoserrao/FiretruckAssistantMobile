@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="vm"
+            type="com.example.augusto.firetruckassistant.FiretruckAssistVM"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <TextView
+            android:id="@+id/txvNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="5dp"
+            android:text="Name:"
+            android:textSize="30dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/txvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="5dp"
+            android:text="@{vm.Name}"
+            android:textSize="30dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintLeft_toRightOf="@+id/txvNameText"/>
+
+        <ScrollView
+            android:id="@+id/scrvFireInfo"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txvName"
+            android:background="@color/colorPrimary">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+                <TextView
+                    android:id="@+id/txtFireIdText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="Fire #"
+                    android:textSize="35dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtFireId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@+id/txtFireIdText"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@{Integer.toString(vm.ID)}"
+                    android:textSize="35dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtStatusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFireIdText"
+                    android:text="Status: "
+                    android:textSize="25dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@+id/txtStatusText"
+                    app:layout_constraintTop_toTopOf="@+id/txtStatusText"
+                    android:text="@{vm.Status}"
+                    android:textSize="25dp"
+                    android:textColor="@color/background"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtLocationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtStatusText"
+                    android:text="Location: "
+                    android:textSize="25dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@+id/txtLocationText"
+                    app:layout_constraintTop_toTopOf="@+id/txtLocationText"
+                    android:text="@{Integer.toString(vm.Location)}"
+                    android:textSize="25dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/txtRoutes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLocationText"
+                    android:text="@{Integer.toString(vm.NumberOfRoutes)}"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/txtRoutesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/txtRoutes"
+                    app:layout_constraintTop_toTopOf="@+id/txtRoutes"
+                    android:text=" possible routes:"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/txtRouteList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtRoutes"
+                    android:text="@{vm.RouteList}"
+                    android:textSize="20dp"/>
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Start"
+            app:layout_constraintTop_toBottomOf="@+id/scrvFireInfo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:onClick="Button_Start_Clicked"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
